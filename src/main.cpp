@@ -11,9 +11,13 @@
 #include <errno.h> 
 #include <netdb.h> 
 #include <sys/types.h> 
+#include <sys/stat.h> 
 #include <sys/socket.h> 
 #include <netinet/in.h> 
 #include <arpa/inet.h>
+
+#include <dirent.h>
+#include <errno.h>
 
 #include "httplib.h"
 #include "ml.hpp"
@@ -91,6 +95,14 @@ Mat capture(){
 void upload_output (Mat resultImg, int peopleNumber, string fileName = getCurrTime()) {
 	time_t t = time(0);   // get time now
 	struct tm * now = localtime( & t );
+	
+	DIR* dir = opendir("outputs");
+	if(dir){
+		closedir(dir);
+	}else if (ENOENT == errno) {
+		mkdir("outputs/",0777);
+		/* Directory does not exist. */
+	}
 	
 	char buffer [80];
 	strftime (buffer,80,"%Y.%m.%d,%H:%M:%S",now);
