@@ -1,0 +1,5 @@
+# ignore outputs
+outputs/
+
+# ignore YOLO model
+models/ 
