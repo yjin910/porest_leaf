@@ -71,8 +71,7 @@ Mat capture(){
 	}
 
 	//--- GRAB AND WRITE LOOP
-	cout << "Start grabbing" << endl
-	   << "Press any key to terminate" << endl;
+	cout << "Start grabbing" << endl;
 	for (;;)
 	{
 		// wait for a new frame from camera and store it into 'frame'
