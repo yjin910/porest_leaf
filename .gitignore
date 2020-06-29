@@ -2,4 +2,7 @@
 outputs/
 
 # ignore YOLO model
-models/ 
+models/
+
+# ignore .out files
+.server.out 
